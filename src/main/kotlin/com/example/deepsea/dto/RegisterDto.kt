@@ -1,6 +1,10 @@
 package com.example.deepsea.dto
 
+import jakarta.validation.constraints.Email
+
 data class RegisterDto(
-    val name: String,
-    val password: String
+    val username: String,
+    val password: String,
+    @field:Email(message = "Email is not validation")
+    val email: String
 )

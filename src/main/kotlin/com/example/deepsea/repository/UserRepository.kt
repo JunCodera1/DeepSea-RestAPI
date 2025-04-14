@@ -9,4 +9,6 @@ interface UserRepository : JpaRepository<User, Long> {
     override fun findById(id: Long): Optional<User>
 
     fun existsByUsername(username: String): Boolean
+
+    override fun findAll(): List<User>
 }

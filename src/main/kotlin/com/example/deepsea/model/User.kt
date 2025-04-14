@@ -1,6 +1,7 @@
 package com.example.deepsea.model
 
 import jakarta.persistence.*
+import jakarta.validation.constraints.Email
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
@@ -16,7 +17,11 @@ data class User(
     private val username: String = "",
 
     @Column
-    private val password: String = ""
+    private val password: String = "",
+
+    @field:Email
+    @Column(unique = true, nullable = false)
+    private val email: String = ""
 ) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority> = emptyList()
 
