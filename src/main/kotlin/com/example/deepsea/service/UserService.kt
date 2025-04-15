@@ -2,6 +2,7 @@ package com.example.deepsea.service
 
 import com.example.deepsea.model.User
 import com.example.deepsea.repository.UserRepository
+import jakarta.validation.constraints.Email
 import org.springframework.stereotype.Service
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
@@ -21,11 +22,15 @@ class UserService(
         return userRepository.findByUsername(username)
     }
 
+    fun findByEmail(email: String): User? {
+        return userRepository.findByEmail(email)
+    }
+
     fun save(user: User): User {
         return userRepository.save(user)
     }
 
-    fun getUserById(id: Long): User {
+    fun getUserById(id: Long): User? {
         return userRepository.findById(id).orElse(null)
     }
 
@@ -35,6 +40,10 @@ class UserService(
 
     fun getAllUsers() : List<User>{
         return userRepository.findAll()
+    }
+
+    fun delete(user: User) {
+        userRepository.delete(user)
     }
 
 }

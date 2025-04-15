@@ -28,6 +28,7 @@ data class User(
     // Use the property directly instead of implementing these methods
     override fun getPassword(): String = password
     override fun getUsername(): String = username
+    fun getEmail(): String = email
 
     override fun isAccountNonExpired() = true
     override fun isAccountNonLocked() = true

@@ -7,6 +7,7 @@ import com.example.deepsea.model.User
 import com.example.deepsea.service.HashService
 import com.example.deepsea.service.TokenService
 import com.example.deepsea.service.UserService
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 class AuthController(
     private val hashService: HashService,
     private val tokenService: TokenService,
@@ -30,12 +31,12 @@ class AuthController(
     // Lấy user theo ID
     @GetMapping("/users/{id}")
     fun getUserById(@PathVariable id: Long): User {
-        return userService.getUserById(id)
+        return userService.getUserById(id) ?: throw ApiException(404, "User with id=$id not found")
     }
 
     @PostMapping("/login")
     fun login(@RequestBody payload: LoginDto): LoginDto {
-        val user = userService.findByUsername(payload.name) ?: throw ApiException(400, "Login failed")
+        val user = userService.findByEmail(payload.email) ?: throw ApiException(400, "Login failed")
 
         if (!hashService.checkBcrypt(payload.password, user.password)) {
             throw ApiException(400, "Login failed")
@@ -47,17 +48,28 @@ class AuthController(
     }
 
     @PostMapping("/register")
-    fun register(@RequestBody payload: List<RegisterDto>): List<LoginDto> {
-        return payload.map { dto ->
-            if (userService.existsByName(dto.username)) {
-                throw ApiException(400, "Name already exists")
-            }
-            val user = User(
-                username = dto.username,
-                password = hashService.hashBcrypt(dto.password)
-            )
-            val savedUser = userService.save(user)
-            LoginDto(token = tokenService.createToken(savedUser))
+    fun register(@RequestBody dto: RegisterDto): LoginDto {
+        if (userService.existsByName(dto.username)) {
+            throw ApiException(400, "Name already exists")
         }
+
+        val user = User(
+            username = dto.username,
+            password = hashService.hashBcrypt(dto.password),
+            email = dto.email
+        )
+        val savedUser = userService.save(user)
+        return LoginDto(token = tokenService.createToken(savedUser))
     }
+
+
+    @DeleteMapping("/delete-user/{id}")
+    fun deleteUser(@PathVariable id: Long): String {
+        val user = userService.getUserById(id)
+        if (user != null) {
+            userService.delete(user)
+        }
+        return "User with id=$id deleted successfully"
+    }
+
 }
