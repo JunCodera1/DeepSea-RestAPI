@@ -1,7 +1,7 @@
 package com.example.deepsea.controller
 
+import RegisterDto
 import com.example.deepsea.dto.LoginDto
-import com.example.deepsea.dto.RegisterDto
 import com.example.deepsea.exception.ApiException
 import com.example.deepsea.model.User
 import com.example.deepsea.service.HashService
@@ -56,7 +56,8 @@ class AuthController(
         val user = User(
             username = dto.username,
             password = hashService.hashBcrypt(dto.password),
-            email = dto.email
+            email = dto.email,
+            avatarUrl = dto.avatarUrl
         )
         val savedUser = userService.save(user)
         return LoginDto(token = tokenService.createToken(savedUser))

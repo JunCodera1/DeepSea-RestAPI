@@ -6,22 +6,25 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 @Entity
-@Table(name = "api_user")
+@Table(name = "users")
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "api_user_id")
     @SequenceGenerator(name = "api_user_id_seq", allocationSize = 1)
     val id: Long? = 0,
 
-    @Column(unique = true)
+    @Column(unique = true, name = "username")
     private val username: String = "",
 
-    @Column
+    @Column(name = "password")
     private val password: String = "",
 
     @field:Email
-    @Column(unique = true, nullable = false)
-    private val email: String = ""
+    @Column(unique = true, nullable = false, name = "email")
+    private val email: String = "",
+
+    @Column(name = "avatar_url")
+    private val avatarUrl: String? = null
 ) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority> = emptyList()
 
