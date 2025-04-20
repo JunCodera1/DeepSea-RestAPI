@@ -1,6 +1,8 @@
 package com.example.deepsea.service
 
 import com.example.deepsea.model.User
+import com.example.deepsea.model.UserProfile
+import com.example.deepsea.repository.UserProfileRepository
 import com.example.deepsea.repository.UserRepository
 import jakarta.validation.constraints.Email
 import org.springframework.stereotype.Service
@@ -10,7 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
 
 @Service
 class UserService(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val userProfileRepository: UserProfileRepository
 ) : UserDetailsService {
 
     override fun loadUserByUsername(username: String): UserDetails {
@@ -45,5 +48,8 @@ class UserService(
     fun delete(user: User) {
         userRepository.delete(user)
     }
-
+    fun getUserProfile(userId: Long): UserProfile {
+        val user = userRepository.findById(userId).orElseThrow { Exception("User not found") }
+        return user.profile ?: throw Exception("Profile not found")
+    }
 }

@@ -13,6 +13,9 @@ data class User(
     @SequenceGenerator(name = "api_user_id_seq", allocationSize = 1)
     val id: Long? = 0,
 
+    @Column(unique = true, name = "name")
+    private val name: String = "",
+
     @Column(unique = true, name = "username")
     private val username: String = "",
 
@@ -23,8 +26,10 @@ data class User(
     @Column(unique = true, nullable = false, name = "email")
     private val email: String = "",
 
-    @Column(name = "avatar_url")
-    private val avatarUrl: String? = null
+    @Column(name = "avatar_url") val avatarUrl: String? = null,
+
+    @OneToOne(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val profile: UserProfile? = null
 ) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority> = emptyList()
 
@@ -32,6 +37,7 @@ data class User(
     override fun getPassword(): String = password
     override fun getUsername(): String = username
     fun getEmail(): String = email
+    fun getName(): String = name
 
     override fun isAccountNonExpired() = true
     override fun isAccountNonLocked() = true

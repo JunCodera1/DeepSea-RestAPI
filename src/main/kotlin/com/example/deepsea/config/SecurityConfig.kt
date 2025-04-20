@@ -22,9 +22,21 @@ class SecurityConfig {
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { auth ->
                 auth
-                    .requestMatchers("/api/auth/**", "/api/upload/**", "/api/uploads/**").permitAll()
-                    .requestMatchers("/", "/index.html", "/css/**", "/js/**", "/images/**").permitAll()
-                    .anyRequest().authenticated()
+                    .requestMatchers(
+                        "/api/auth/**",
+                        "/api/upload/**",
+                        "/api/uploads/**",
+                        "/api/profiles/**"
+                    ).permitAll()
+                    .requestMatchers(
+                        "/",
+                        "/index.html",
+                        "/css/**",
+                        "/js/**",
+                        "/images/**"
+                    ).permitAll()
+                    .anyRequest()
+                    .authenticated()
             }
 
         return http.build()
@@ -35,7 +47,13 @@ class SecurityConfig {
         val configuration = CorsConfiguration()
         configuration.allowedOrigins = listOf("http://10.0.2.2")
         configuration.allowedOrigins = listOf("*")
-        configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
+        configuration.allowedMethods = listOf(
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "OPTIONS"
+        )
         configuration.allowedHeaders = listOf("*")
         configuration.allowCredentials = true
         val source = UrlBasedCorsConfigurationSource()

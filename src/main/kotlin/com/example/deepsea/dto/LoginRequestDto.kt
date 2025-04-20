@@ -1,7 +1,6 @@
 package com.example.deepsea.dto
 
-data class LoginDto(
+data class LoginRequestDto(
     val password: String="",
     val email: String = "",
-    val token: String? = null
 )
