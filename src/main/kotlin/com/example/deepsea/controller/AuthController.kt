@@ -60,7 +60,6 @@ class AuthController(
             throw ApiException(400, "Name already exists")
         }
 
-        // Tạo user
         val user = User(
             name = dto.name,
             username = dto.username,
@@ -83,7 +82,6 @@ class AuthController(
         )
         userProfileService.saveUserProfile(profile)
 
-        // Trả về RegisterResponseDto
         return RegisterResponseDto(
             id = savedUser.id,
             name = savedUser.getName(),

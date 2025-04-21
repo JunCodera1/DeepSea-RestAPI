@@ -26,7 +26,8 @@ class SecurityConfig {
                         "/api/auth/**",
                         "/api/upload/**",
                         "/api/uploads/**",
-                        "/api/profiles/**"
+                        "/api/profiles/**",
+                        "/api/users/**"
                     ).permitAll()
                     .requestMatchers(
                         "/",
