@@ -29,7 +29,10 @@ data class User(
     @Column(name = "avatar_url") val avatarUrl: String? = null,
 
     @OneToOne(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val profile: UserProfile? = null
+    val profile: UserProfile? = null,
+
+    @Column(name = "is_first_login")
+    var firstLogin: Boolean = true
 ) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority> = emptyList()
 

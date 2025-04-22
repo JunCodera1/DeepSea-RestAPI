@@ -46,11 +46,17 @@ class AuthController(
             throw ApiException(400, "Login failed")
         }
 
+        val isFirstLogin = user.firstLogin
+        if (isFirstLogin) {
+            userService.updateFirstLoginStatus(user.id!!)
+        }
+
         return LoginResponseDto(
-            id = user.id,
+            id = user.id!!,
             token = tokenService.createToken(user),
             username = user.username,
-            email = user.getEmail()
+            email = user.getEmail(),
+            firstLogin = isFirstLogin
         )
     }
 

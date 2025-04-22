@@ -52,4 +52,12 @@ class UserService(
         val user = userRepository.findById(userId).orElseThrow { Exception("User not found") }
         return user.profile ?: throw Exception("Profile not found")
     }
+
+    fun updateFirstLoginStatus(userId: Long) {
+        val user = userRepository.findById(userId).orElseThrow { Exception("User not found") }
+        if (user.firstLogin) {
+            user.firstLogin = false
+            userRepository.save(user)
+        }
+    }
 }
