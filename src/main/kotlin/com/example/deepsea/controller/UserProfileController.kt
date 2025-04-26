@@ -1,9 +1,13 @@
 package com.example.deepsea.controller
 
+import com.example.deepsea.dto.SurveyOption
+import com.example.deepsea.dto.SurveySelectionDto
 import com.example.deepsea.dto.UserProfileDto
+import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.service.UserProfileService
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -23,4 +27,29 @@ class UserProfileController(
         val profileData = userProfileService.getUserProfileData(userId)
         return ResponseEntity.ok(profileData)
     }
+    @PostMapping("/update-survey")
+    fun updateSurveySelection(
+        @AuthenticationPrincipal user: User?,
+        @RequestBody request: SurveySelectionDto
+    ): ResponseEntity<String> {
+        if (user == null) return ResponseEntity.status(401).body("Unauthorized")
+
+        val profile = user.profile ?: return ResponseEntity.notFound().build()
+
+        val updatedSurveys = request.surveyOptions.mapNotNull {
+            try {
+                SurveyOption.valueOf(it.toString().uppercase())
+            } catch (e: IllegalArgumentException) {
+                null
+            }
+        }.toSet()
+
+        // Remove this line since it's not used
+        // val updatedProfile = profile.copy(selectedSurveys = updatedSurveys)
+
+        userProfileService.updateSurveySelections(profile, updatedSurveys)
+        return ResponseEntity.ok("Survey selections updated.")
+    }
+
+
 }

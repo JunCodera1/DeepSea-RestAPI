@@ -9,4 +9,6 @@ interface UserProfileRepository : JpaRepository<UserProfile, Long> {
     override fun findById(id: Long): Optional<UserProfile> {
         TODO("Not yet implemented")
     }
+    fun findByUserUsername(username: String): UserProfile?
+    fun findByUserId(userId: Long): UserProfile?
 }

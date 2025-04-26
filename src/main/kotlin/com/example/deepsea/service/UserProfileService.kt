@@ -1,5 +1,6 @@
 package com.example.deepsea.service
 
+import com.example.deepsea.dto.SurveyOption
 import com.example.deepsea.dto.UserProfileDto
 import com.example.deepsea.exception.UserNotFoundException
 import com.example.deepsea.exception.UserProfileNotFoundException
@@ -42,5 +43,10 @@ class UserProfileService(
     }
     fun saveUserProfile(profile: UserProfile): UserProfile {
         return userProfileRepository.save(profile)
+    }
+
+    fun updateSurveySelections(profile: UserProfile, surveys: Set<SurveyOption>): UserProfile {
+        val updatedProfile = profile.copy(selectedSurveys = surveys)
+        return userProfileRepository.save(updatedProfile)
     }
 }
