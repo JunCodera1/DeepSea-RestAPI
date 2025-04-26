@@ -4,7 +4,7 @@ data class UserProfileDto(
     val name: String,
     val username: String,
     val joinDate: String,
-    val courses: Set<Language>,
+    val courses: Set<LanguageOption>,
     val followers: Int,
     val following: Int,
     val dayStreak: Int,

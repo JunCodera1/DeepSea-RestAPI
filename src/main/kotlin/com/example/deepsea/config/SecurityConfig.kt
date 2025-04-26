@@ -29,6 +29,7 @@ class SecurityConfig {
                         "/api/profiles/**",
                         "/api/users/**",
                         "/api/survey/**",
+                        "/api/language/**",
                         "/api/ping/**"
                     ).permitAll()
                     .requestMatchers(

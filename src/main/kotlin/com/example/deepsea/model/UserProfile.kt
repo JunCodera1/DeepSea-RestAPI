@@ -1,11 +1,10 @@
 package com.example.deepsea.model
 
-import com.example.deepsea.dto.Language
+import com.example.deepsea.dto.LanguageOption
 import com.example.deepsea.dto.SurveyOption
 import com.example.deepsea.util.toFormattedJoinDate
 import jakarta.persistence.*
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 @Entity
 @Table(name = "user_profiles")
@@ -18,11 +17,11 @@ data class UserProfile(
     val username: String = "",
     val joinDate: String = LocalDateTime.now().toFormattedJoinDate(),
 
-    @ElementCollection
+    @ElementCollection(targetClass = LanguageOption::class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_courses", joinColumns = [JoinColumn(name = "user_profile_id")])
     @Column(name = "courses")
-    val courses: Set<Language> = emptySet(),
+    var courses: Set<LanguageOption> = emptySet(),
 
     @ElementCollection(targetClass = SurveyOption::class)
     @Enumerated(EnumType.STRING)

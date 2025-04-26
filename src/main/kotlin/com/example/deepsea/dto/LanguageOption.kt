@@ -1,6 +1,6 @@
 package com.example.deepsea.dto
 
-enum class Language(val displayName: String) {
+enum class LanguageOption(val displayName: String) {
     ENGLISH("ENGLISH"),
     SPANISH("SPANISH"),
     JAPANESE("JAPANESE"),

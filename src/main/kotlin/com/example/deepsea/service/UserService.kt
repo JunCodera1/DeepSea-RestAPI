@@ -1,5 +1,6 @@
 package com.example.deepsea.service
 
+import com.example.deepsea.dto.LanguageOption
 import com.example.deepsea.dto.SurveyOption
 import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
@@ -69,6 +70,14 @@ class UserService(
             ?: throw IllegalStateException("User profile not found")
 
         userProfile.selectedSurveys = surveySelections
+        return userProfileRepository.save(userProfile)
+    }
+
+    fun updateUserLanguageSelections(userId: Long, languageSelections: Set<LanguageOption>): UserProfile? {
+        val userProfile = userProfileRepository.findByUserId(userId)
+            ?: throw IllegalStateException("User profile not found")
+
+        userProfile.courses = languageSelections
         return userProfileRepository.save(userProfile)
     }
 

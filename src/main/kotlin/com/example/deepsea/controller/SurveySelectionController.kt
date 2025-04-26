@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/survey")
-class SurveyController(private val userService: UserService) {
+class SurveySelectionController(private val userService: UserService) {
     @PostMapping("/save")
     fun saveSurveySelections(@RequestBody request: SurveySelectionDto): ResponseEntity<UserProfile> {
         val updatedProfile = userService.updateUserSurveySelections(
