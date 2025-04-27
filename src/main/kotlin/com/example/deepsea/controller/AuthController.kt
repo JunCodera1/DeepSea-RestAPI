@@ -40,17 +40,22 @@ class AuthController(
 
     @PostMapping("/login")
     fun login(@RequestBody payload: LoginRequestDto): LoginResponseDto {
-        val user = userService.findByEmail(payload.email) ?: throw ApiException(400, "Login failed")
+        // Tìm người dùng theo email
+        val user = userService.findByEmail(payload.email)
+            .orElseThrow { ApiException(400, "Login failed") } // Nếu không tìm thấy user, ném exception
 
+        // Kiểm tra mật khẩu
         if (!hashService.checkBcrypt(payload.password, user.password)) {
             throw ApiException(400, "Login failed")
         }
 
+        // Kiểm tra trạng thái đăng nhập lần đầu
         val isFirstLogin = user.firstLogin
         if (isFirstLogin) {
             userService.updateFirstLoginStatus(user.id!!)
         }
 
+        // Trả về thông tin đăng nhập
         return LoginResponseDto(
             id = user.id!!,
             token = tokenService.createToken(user),
@@ -59,6 +64,7 @@ class AuthController(
             firstLogin = isFirstLogin
         )
     }
+
 
     @PostMapping("/register")
     fun register(@RequestBody dto: RegisterResponseDto): RegisterResponseDto {

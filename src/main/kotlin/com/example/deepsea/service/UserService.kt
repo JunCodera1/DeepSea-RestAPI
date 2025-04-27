@@ -7,12 +7,12 @@ import com.example.deepsea.model.UserProfile
 import com.example.deepsea.repository.UserProfileRepository
 import com.example.deepsea.repository.UserRepository
 import jakarta.transaction.Transactional
-import jakarta.validation.constraints.Email
-import org.springframework.security.core.context.SecurityContextHolder
+
 import org.springframework.stereotype.Service
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
+import java.util.*
 
 @Service
 class UserService(
@@ -29,9 +29,10 @@ class UserService(
         return userRepository.findByUsername(username)
     }
 
-    fun findByEmail(email: String): User? {
+    fun findByEmail(email: String): Optional<User> {
         return userRepository.findByEmail(email)
     }
+
 
     fun save(user: User): User {
         return userRepository.save(user)

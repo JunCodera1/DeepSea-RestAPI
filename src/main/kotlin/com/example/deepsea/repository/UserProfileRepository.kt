@@ -1,5 +1,6 @@
 package com.example.deepsea.repository
 
+import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*

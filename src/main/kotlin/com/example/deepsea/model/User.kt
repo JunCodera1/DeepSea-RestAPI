@@ -20,7 +20,7 @@ data class User(
     private val username: String = "",
 
     @Column(name = "password")
-    private val password: String = "",
+    private var password: String = "",
 
     @field:Email
     @Column(unique = true, nullable = false, name = "email")
@@ -35,6 +35,7 @@ data class User(
     @Column(name = "is_first_login")
     var firstLogin: Boolean = true
 ) : UserDetails {
+
     override fun getAuthorities(): Collection<GrantedAuthority> = emptyList()
 
     // Use the property directly instead of implementing these methods
@@ -42,6 +43,10 @@ data class User(
     override fun getUsername(): String = username
     fun getEmail(): String = email
     fun getName(): String = name
+
+    fun updatePassword(newPassword: String) {
+        this.password = newPassword
+    }
 
     override fun isAccountNonExpired() = true
     override fun isAccountNonLocked() = true
