@@ -40,7 +40,6 @@ class AuthController(
 
     @PostMapping("/login")
     fun login(@RequestBody payload: LoginRequestDto): LoginResponseDto {
-        // Tìm người dùng theo email
         val user = userService.findByEmail(payload.email)
             .orElseThrow { ApiException(400, "Login failed") } // Nếu không tìm thấy user, ném exception
 
@@ -49,7 +48,6 @@ class AuthController(
             throw ApiException(400, "Login failed")
         }
 
-        // Kiểm tra trạng thái đăng nhập lần đầu
         val isFirstLogin = user.firstLogin
         if (isFirstLogin) {
             userService.updateFirstLoginStatus(user.id!!)
@@ -61,7 +59,8 @@ class AuthController(
             token = tokenService.createToken(user),
             username = user.username,
             email = user.getEmail(),
-            firstLogin = isFirstLogin
+            firstLogin = isFirstLogin,
+            profile_id = user.profile!!.id
         )
     }
 
