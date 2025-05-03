@@ -1,7 +1,5 @@
 package com.example.deepsea.model
 
-import com.example.deepsea.dto.LanguageOption
-import com.example.deepsea.dto.SurveyOption
 import com.example.deepsea.util.toFormattedJoinDate
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -28,6 +26,10 @@ data class UserProfile(
     @CollectionTable(name = "user_survey_selections", joinColumns = [JoinColumn(name = "user_profile_id")])
     @Column(name = "survey")
     var selectedSurveys: Set<SurveyOption> = emptySet(),
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "daily_goal")
+    var dailyGoal: DailyGoalOption = DailyGoalOption.CASUAL,
 
     var followers: Int = 0,
     var following: Int = 0,

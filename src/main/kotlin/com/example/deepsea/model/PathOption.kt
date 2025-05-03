@@ -1,4 +1,4 @@
-package com.example.deepsea.dto
+package com.example.deepsea.model
 
 enum class PathOption {
     BEGINNER,

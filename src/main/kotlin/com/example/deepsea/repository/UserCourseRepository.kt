@@ -1,7 +1,7 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.dto.LanguageOption
-import com.example.deepsea.dto.PathOption
+import com.example.deepsea.model.LanguageOption
+import com.example.deepsea.model.PathOption
 import com.example.deepsea.model.UserCourse
 import com.example.deepsea.model.UserCourseId
 import org.springframework.data.jpa.repository.JpaRepository

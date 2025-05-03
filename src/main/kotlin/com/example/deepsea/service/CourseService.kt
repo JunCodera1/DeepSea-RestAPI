@@ -1,7 +1,7 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.dto.LanguageOption
-import com.example.deepsea.dto.PathOption
+import com.example.deepsea.model.LanguageOption
+import com.example.deepsea.model.PathOption
 import com.example.deepsea.dto.UserCourseDto
 import com.example.deepsea.model.UserCourse
 import com.example.deepsea.model.UserCourseId

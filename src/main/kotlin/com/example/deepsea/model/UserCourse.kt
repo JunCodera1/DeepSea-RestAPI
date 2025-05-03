@@ -1,7 +1,5 @@
 package com.example.deepsea.model
 
-import com.example.deepsea.dto.LanguageOption
-import com.example.deepsea.dto.PathOption
 import jakarta.persistence.*
 import java.io.Serializable
 

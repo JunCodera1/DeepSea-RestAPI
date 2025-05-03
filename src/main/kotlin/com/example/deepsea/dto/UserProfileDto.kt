@@ -1,5 +1,8 @@
 package com.example.deepsea.dto
 
+import com.example.deepsea.model.DailyGoalOption
+import com.example.deepsea.model.LanguageOption
+
 data class UserProfileDto(
     val name: String,
     val username: String,
@@ -11,6 +14,6 @@ data class UserProfileDto(
     val totalXp: Int,
     val currentLeague: String,
     val topFinishes: Int,
-    val friends: Set<Any>
+    val friends: Set<Any>,
+    val dailyGoalOption: DailyGoalOption?
 )
-

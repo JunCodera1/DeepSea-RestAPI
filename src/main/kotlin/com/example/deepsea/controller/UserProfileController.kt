@@ -1,8 +1,10 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.dto.SurveyOption
+import com.example.deepsea.dto.DailyGoalRequest
+import com.example.deepsea.model.SurveyOption
 import com.example.deepsea.dto.SurveySelectionDto
 import com.example.deepsea.dto.UserProfileDto
+import com.example.deepsea.model.DailyGoalOption
 import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.service.UserProfileService
@@ -51,5 +53,17 @@ class UserProfileController(
         return ResponseEntity.ok("Survey selections updated.")
     }
 
+    @PutMapping("/{userId}/daily-goal")
+    fun updateDailyGoal(
+        @PathVariable userId: Long,
+        @RequestBody request: DailyGoalRequest
+    ): ResponseEntity<Unit> {
+        return try {
+            userProfileService.updateDailyGoal(userId, request.goal)
+            ResponseEntity.ok().build()
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().build()
+        }
+    }
 
 }

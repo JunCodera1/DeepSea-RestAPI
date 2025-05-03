@@ -1,4 +1,4 @@
-package com.example.deepsea.dto
+package com.example.deepsea.model
 
 enum class LanguageOption(val displayName: String) {
     ENGLISH("ENGLISH"),
@@ -6,5 +6,6 @@ enum class LanguageOption(val displayName: String) {
     JAPANESE("JAPANESE"),
     FRENCH("FRENCH"),
     GERMANY("GERMANY"),
-    ITALY("ITALY")
+    ITALY("ITALY"),
+    KOREAN("KOREAN")
 }

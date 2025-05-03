@@ -1,9 +1,10 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.dto.SurveyOption
+import com.example.deepsea.model.SurveyOption
 import com.example.deepsea.dto.UserProfileDto
 import com.example.deepsea.exception.UserNotFoundException
 import com.example.deepsea.exception.UserProfileNotFoundException
+import com.example.deepsea.model.DailyGoalOption
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.repository.UserProfileRepository
 import com.example.deepsea.repository.UserRepository
@@ -38,7 +39,8 @@ class UserProfileService(
             totalXp = profile.totalXp,
             currentLeague = profile.currentLeague,
             topFinishes = profile.topFinishes,
-            friends = profile.friends
+            friends = profile.friends,
+            dailyGoalOption = profile.dailyGoal
         )
     }
     fun saveUserProfile(profile: UserProfile): UserProfile {
@@ -49,4 +51,14 @@ class UserProfileService(
         val updatedProfile = profile.copy(selectedSurveys = surveys)
         return userProfileRepository.save(updatedProfile)
     }
+
+    fun updateDailyGoal(userId: Long, dailyGoal: DailyGoalOption) {
+        val userProfile = userProfileRepository.findById(userId).orElseThrow {
+            throw UserNotFoundException("User not found")
+        }
+
+        userProfile.dailyGoal = dailyGoal
+        userProfileRepository.save(userProfile)
+    }
+
 }
