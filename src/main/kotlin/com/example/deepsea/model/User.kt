@@ -4,6 +4,7 @@ import jakarta.persistence.*
 import jakarta.validation.constraints.Email
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import java.time.LocalDate
 
 @Entity
 @Table(name = "users")
@@ -33,7 +34,12 @@ data class User(
     val profile: UserProfile? = null,
 
     @Column(name = "is_first_login")
-    var firstLogin: Boolean = true
+    var firstLogin: Boolean = true,
+
+    @Column(name = "last_login")
+
+
+    var lastLogin: LocalDate = LocalDate.now(),
 ) : UserDetails {
 
     override fun getAuthorities(): Collection<GrantedAuthority> = emptyList()

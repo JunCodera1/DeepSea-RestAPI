@@ -32,7 +32,11 @@ class SecurityConfig {
                         "/api/language/**",
                         "/api/ping/**",
                         "/api/password-reset/**",
-                        "/api/courses/**"
+                        "/api/courses/**",
+                        "/api/lessons/**",
+                        "/api/rank/**",
+                        "/api/leaderboard/**",
+                        "/error"
                     ).permitAll()
                     .requestMatchers(
                         "/",
@@ -51,7 +55,7 @@ class SecurityConfig {
     @Bean
     fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
-        configuration.allowedOrigins = listOf("http://10.0.2.2") // Hoặc origin thật sự từ client
+        configuration.allowedOrigins = listOf("http://10.0.2.2")
         configuration.allowedMethods = listOf("GET", "POST", "PUT", "DELETE", "OPTIONS")
         configuration.allowedHeaders = listOf("*")
         configuration.allowCredentials = true

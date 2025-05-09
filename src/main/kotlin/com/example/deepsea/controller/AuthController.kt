@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 @RestController
 @RequestMapping("/api/auth")
@@ -42,7 +44,15 @@ class AuthController(
     fun login(@RequestBody payload: LoginRequestDto): LoginResponseDto {
         val user = userService.findByEmail(payload.email)
             .orElseThrow { ApiException(400, "Login failed") } // Nếu không tìm thấy user, ném exception
+        val today = LocalDate.now()
+        val lastLogin = user.lastLogin
 
+        user.profile!!.dayStreak = when {
+            lastLogin == null -> 1
+            ChronoUnit.DAYS.between(lastLogin, today) == 1L -> user.profile.dayStreak + 1
+            ChronoUnit.DAYS.between(lastLogin, today) > 1L -> 1
+            else -> user.profile.dayStreak // login cùng ngày, không thay đổi
+        }
         // Kiểm tra mật khẩu
         if (!hashService.checkBcrypt(payload.password, user.password)) {
             throw ApiException(400, "Login failed")
