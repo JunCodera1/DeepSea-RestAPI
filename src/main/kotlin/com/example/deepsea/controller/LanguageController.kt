@@ -1,6 +1,6 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.model.AudioResponse
+import com.example.deepsea.dto.AudioResponse
 import com.example.deepsea.model.HearingExercise
 import com.example.deepsea.service.AudioService
 import com.example.deepsea.service.ExerciseService

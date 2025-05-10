@@ -1,4 +1,4 @@
-package com.example.deepsea.model
+package com.example.deepsea.dto
 
 data class AudioResponse(
     val audioUrl: String,
