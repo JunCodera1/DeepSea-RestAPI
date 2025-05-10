@@ -15,5 +15,5 @@ interface UnitRepository : JpaRepository<com.example.deepsea.model.Unit, Long> {
 
     @Query("SELECT SUM(l.starsReward) FROM Lesson l WHERE l.unitId IN " +
             "(SELECT u.id FROM Unit u WHERE u.sectionId = :sectionId)")
-    fun getTotalStarsBySectionId(sectionId: Long): Int
+    fun getTotalStarsBySectionId(sectionId: Long): Int?
 }

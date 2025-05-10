@@ -9,16 +9,17 @@ data class Section(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
-    val title: String,
-    val description: String,
-    val color: String,
-    val darkerColor: String,
-    val image: String,
-    val level: String,
+    val title: String = "",
+    val description: String = "",
+    val color: String = "",
+    val darkerColor: String = "",
+    val image: String = "",
+    val level: String = "",
 
     @Column(name = "order_index")
-    val orderIndex: Int
+    val orderIndex: Int = 0
 )
+
 
 fun Section.toDto(unitCount: Int = 0): SectionDto =
     SectionDto(

@@ -10,16 +10,16 @@ data class Unit(
     val id: Long = 0,
 
     @Column(name = "section_id")
-    val sectionId: Long,
+    val sectionId: Long = 0L,
 
-    val title: String,
-    val description: String,
-    val color: String,
-    val darkerColor: String,
-    val image: String,
+    val title: String = "",
+    val description: String = "",
+    val color: String = "",
+    val darkerColor: String = "",
+    val image: String = "",
 
     @Column(name = "order_index")
-    val orderIndex: Int,
+    val orderIndex: Int = 0,
 
     @Column(name = "stars_required")
     val starsRequired: Int = 0

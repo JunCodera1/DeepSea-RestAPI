@@ -36,6 +36,10 @@ class SecurityConfig {
                         "/api/lessons/**",
                         "/api/rank/**",
                         "/api/leaderboard/**",
+                        "/api/sections/**",
+                        "/api/progress/**",
+                        "/api/units/**",
+                        "/api/lessons/**",
                         "/error"
                     ).permitAll()
                     .requestMatchers(

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/leaderboard")
-class LeaderBoardController(
+class LeaderboardController(
     private val userProfileRepository: UserProfileRepository
 ) {
     @GetMapping("/top")

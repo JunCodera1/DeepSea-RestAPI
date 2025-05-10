@@ -6,8 +6,8 @@ data class UnitDto(
     val title: String,
     val description: String,
     val color: String,
-    val darkerColor: String,
-    val image: String,
+    val darkerColor: String?,
+    val image: String?, // ✅ sửa thành nullable
     val orderIndex: Int,
     val starsRequired: Int,
     val lessonCount: Int = 0
