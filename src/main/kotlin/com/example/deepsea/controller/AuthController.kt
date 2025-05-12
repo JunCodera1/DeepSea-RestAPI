@@ -34,7 +34,6 @@ class AuthController(
         return userService.getAllUsers()
     }
 
-    // Lấy user theo ID
     @GetMapping("/users/{id}")
     fun getUserById(@PathVariable id: Long): User {
         return userService.getUserById(id) ?: throw ApiException(404, "User with id=$id not found")

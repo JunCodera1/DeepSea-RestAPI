@@ -40,6 +40,7 @@ class SecurityConfig {
                         "/api/progress/**",
                         "/api/units/**",
                         "/api/lessons/**",
+                        "/api/learn/**",
                         "/error"
                     ).permitAll()
                     .requestMatchers(

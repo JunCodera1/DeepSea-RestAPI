@@ -10,17 +10,22 @@ data class Tip(
     val id: Long = 0,
 
     @Column(name = "unit_id")
-    val unitId: Long,
+    val unitId: Long = 0,
 
     @Column(nullable = false)
-    val title: String,
+    val title: String = "",
 
     @Column(nullable = false, length = 1000)
-    val content: String,
+    val content: String = "",
 
     @Column(name = "order_index")
-    val orderIndex: Int = 0
-) {
+    val orderIndex: Int = 0,
+
+    @ManyToOne
+    @JoinColumn(name = "unit_id", insertable = false, updatable = false)
+    val unit: Unit? = null
+)
+ {
     fun toDto(): com.example.deepsea.dto.TipDto {
         return com.example.deepsea.dto.TipDto(
             id = this.id,

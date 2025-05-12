@@ -17,7 +17,10 @@ data class Section(
     val level: String = "",
 
     @Column(name = "order_index")
-    val orderIndex: Int = 0
+    val orderIndex: Int = 0,
+    @OneToMany
+    @JoinColumn(name = "section_id", referencedColumnName = "id")
+    val units: List<Unit> = emptyList()
 )
 
 
