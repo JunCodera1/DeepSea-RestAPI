@@ -1,7 +1,7 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.LanguageOption
-import com.example.deepsea.model.SurveyOption
+import com.example.deepsea.domain.enums.LanguageOption
+import com.example.deepsea.domain.enums.SurveyOption
 import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.repository.UserProfileRepository

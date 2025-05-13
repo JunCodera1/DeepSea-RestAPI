@@ -1,4 +1,4 @@
-package com.example.deepsea.model
+package com.example.deepsea.domain.enums
 
 enum class DailyGoalOption(val minutesPerDay: Int) {
     CASUAL(5),

@@ -1,9 +1,7 @@
 package com.example.deepsea.controller
 
 import com.example.deepsea.dto.AudioResponse
-import com.example.deepsea.model.HearingExercise
 import com.example.deepsea.service.AudioService
-import com.example.deepsea.service.ExerciseService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,15 +13,8 @@ import org.springframework.core.io.Resource
 @RestController
 @RequestMapping("/api")
 class LanguageController(
-    private val exerciseService: ExerciseService,
     private val audioService: AudioService
 ) {
-
-    @GetMapping("/exercises/hearing")
-    fun getHearingExercise(): ResponseEntity<HearingExercise> {
-        val exercise = exerciseService.getRandomHearingExercise()
-        return ResponseEntity.ok(exercise)
-    }
 
     @GetMapping("/audio/{word}")
     fun getWordAudio(@PathVariable word: String): ResponseEntity<AudioResponse> {

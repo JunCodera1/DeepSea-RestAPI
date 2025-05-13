@@ -1,6 +1,6 @@
 package com.example.deepsea.dto
 
-import com.example.deepsea.model.LanguageOption
+import com.example.deepsea.domain.enums.LanguageOption
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class LanguageSelectionDto(

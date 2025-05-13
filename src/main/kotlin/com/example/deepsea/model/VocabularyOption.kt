@@ -1,5 +1,6 @@
 package com.example.deepsea.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -9,8 +10,12 @@ data class VocabularyOption(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
-    @Column
-    val image: Int,
+    val image: Int = 0, // hoặc URL ảnh
+
+    @ManyToOne
+    @JoinColumn(name = "quiz_question_id", insertable = false, updatable = false)
+    @JsonIgnore
+    val quizQuestion: QuizQuestion? = null,
 
     @ElementCollection
     @CollectionTable(name = "vocabulary_option_language_content", joinColumns = [JoinColumn(name = "vocabulary_option_id")])

@@ -56,4 +56,6 @@ class VocabularyController(
         val options = vocabularyService.getVocabularyOptions(size)
         return ResponseEntity.ok(options)
     }
+
+
 }

@@ -41,6 +41,10 @@ class SecurityConfig {
                         "/api/units/**",
                         "/api/lessons/**",
                         "/api/learn/**",
+                        "/api/game/**",
+                        "/api/language-learning/**",
+                        "api/vocabulary/**",
+                        "/api/exercises/**",
                         "/error"
                     ).permitAll()
                     .requestMatchers(

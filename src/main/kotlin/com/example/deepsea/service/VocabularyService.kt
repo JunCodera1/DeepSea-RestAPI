@@ -1,9 +1,9 @@
 package com.example.deepsea.service
 
 
-import com.example.deepsea.config.DataInitializer.ImageResources
+import com.example.deepsea.config.DataInitializer
+import com.example.deepsea.domain.enums.QuestionType
 import com.example.deepsea.model.LanguageContent
-import com.example.deepsea.model.QuestionType
 import com.example.deepsea.model.QuizQuestion
 import com.example.deepsea.model.VocabularyOption
 import com.example.deepsea.repository.VocabularyRepository
@@ -76,7 +76,7 @@ class VocabularyService(
     private fun createFallbackVocabularyItem(): QuizQuestion {
         val option1 = VocabularyOption(
             id = 1L,
-            image = ImageResources.RICE,
+            image = DataInitializer.ImageResources.RICE,
             languageContent = mapOf(
                 "en" to LanguageContent("water", ""),
                 "ja" to LanguageContent("水", "mizu")
@@ -85,7 +85,7 @@ class VocabularyService(
 
         val option2 = VocabularyOption(
             id = 2L,
-            image = ImageResources.RICE,
+            image = DataInitializer.ImageResources.RICE,
             languageContent = mapOf(
                 "en" to LanguageContent("fire", ""),
                 "ja" to LanguageContent("火", "hi")
@@ -94,7 +94,7 @@ class VocabularyService(
 
         val option3 = VocabularyOption(
             id = 3L,
-            image = ImageResources.RICE,
+            image = DataInitializer.ImageResources.RICE,
             languageContent = mapOf(
                 "en" to LanguageContent("earth", ""),
                 "ja" to LanguageContent("地球", "chikyuu")
@@ -103,7 +103,7 @@ class VocabularyService(
 
         val option4 = VocabularyOption(
             id = 4L,
-            image = ImageResources.RICE,
+            image = DataInitializer.ImageResources.RICE,
             languageContent = mapOf(
                 "en" to LanguageContent("wind", ""),
                 "ja" to LanguageContent("風", "kaze")
@@ -119,7 +119,6 @@ class VocabularyService(
                 "ja" to LanguageContent("水の正しい画像を選んでください", "mizu no tadashii gazou wo erande kudasai")
             ),
             options = listOf(option1, option2, option3, option4),
-            correctAnswerId = 1L
         )
     }
 }

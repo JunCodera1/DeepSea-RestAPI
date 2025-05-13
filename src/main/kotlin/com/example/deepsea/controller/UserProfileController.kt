@@ -1,10 +1,9 @@
 package com.example.deepsea.controller
 
 import com.example.deepsea.dto.DailyGoalRequest
-import com.example.deepsea.model.SurveyOption
+import com.example.deepsea.domain.enums.SurveyOption
 import com.example.deepsea.dto.SurveySelectionDto
 import com.example.deepsea.dto.UserProfileDto
-import com.example.deepsea.model.DailyGoalOption
 import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.service.UserProfileService

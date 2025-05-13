@@ -1,7 +1,7 @@
 package com.example.deepsea.config
 
+import com.example.deepsea.domain.enums.QuestionType
 import com.example.deepsea.model.LanguageContent
-import com.example.deepsea.model.QuestionType
 import com.example.deepsea.model.QuizQuestion
 import com.example.deepsea.model.VocabularyOption
 import com.example.deepsea.repository.VocabularyRepository
@@ -96,7 +96,6 @@ class DataInitializer {
                 "ja" to LanguageContent("${english}の正しい画像を選んでください", "")
             ),
             options = options,
-            correctAnswerId = correctOption.id,
             lessonId = lessonId
         )
     }

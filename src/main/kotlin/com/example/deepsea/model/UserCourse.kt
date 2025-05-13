@@ -1,5 +1,7 @@
 package com.example.deepsea.model
 
+import com.example.deepsea.domain.enums.LanguageOption
+import com.example.deepsea.domain.enums.PathOption
 import jakarta.persistence.*
 import java.io.Serializable
 

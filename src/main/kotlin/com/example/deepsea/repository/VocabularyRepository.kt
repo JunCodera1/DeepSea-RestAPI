@@ -1,6 +1,5 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.QuestionType
 import com.example.deepsea.model.QuizQuestion
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
@@ -27,12 +26,12 @@ interface VocabularyRepository : JpaRepository<QuizQuestion, Long> {
     /**
      * Find a random vocabulary item
      */
-    @Query(value = "SELECT * FROM quiz_question ORDER BY RAND() LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM quiz_question ORDER BY RANDOM() LIMIT 1", nativeQuery = true)
     fun findRandom(): QuizQuestion?
 
     /**
      * Find multiple random vocabulary items for options
      */
-    @Query(value = "SELECT * FROM quiz_question ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+    @Query(value = "SELECT * FROM quiz_question ORDER BY RANDOM() LIMIT :limit", nativeQuery = true)
     fun findRandom(@Param("limit") limit: Int): List<QuizQuestion>
 }

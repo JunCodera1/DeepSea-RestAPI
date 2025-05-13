@@ -4,17 +4,14 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "quiz_question")
-@JsonIgnoreProperties(ignoreUnknown = true)
 data class QuizQuestion(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
-    @Column(nullable = false)
-    val type: String,
+    val type: String = "IMAGE_SELECTION",
 
-    @Column(nullable = false)
-    val prompt: String,
+    val prompt: String = "",
 
     @Column(name = "lesson_id")
     val lessonId: Long = 0,
@@ -24,13 +21,14 @@ data class QuizQuestion(
     @MapKeyColumn(name = "language_code")
     val languageContent: Map<String, LanguageContent> = emptyMap(),
 
-    @OneToMany(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "quiz_question_id")
+    @OneToMany(mappedBy = "quizQuestion", cascade = [CascadeType.ALL], orphanRemoval = true)
     val options: List<VocabularyOption> = emptyList(),
 
-    @Column(name = "correct_answer_id")
-    val correctAnswerId: Long = 0
+    @OneToOne
+    @JoinColumn(name = "correct_answer_id")
+    val correctAnswer: VocabularyOption? = null
 )
+
 
 @Embeddable
 data class LanguageContent(

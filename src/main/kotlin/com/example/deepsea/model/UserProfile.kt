@@ -1,5 +1,8 @@
 package com.example.deepsea.model
 
+import com.example.deepsea.domain.enums.DailyGoalOption
+import com.example.deepsea.domain.enums.LanguageOption
+import com.example.deepsea.domain.enums.SurveyOption
 import com.example.deepsea.util.toFormattedJoinDate
 import jakarta.persistence.*
 import java.time.LocalDateTime

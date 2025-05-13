@@ -1,10 +1,10 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.SurveyOption
+import com.example.deepsea.domain.enums.SurveyOption
 import com.example.deepsea.dto.UserProfileDto
 import com.example.deepsea.exception.UserNotFoundException
 import com.example.deepsea.exception.UserProfileNotFoundException
-import com.example.deepsea.model.DailyGoalOption
+import com.example.deepsea.domain.enums.DailyGoalOption
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.repository.UserProfileRepository
 import com.example.deepsea.repository.UserRepository
@@ -34,6 +34,7 @@ class UserProfileService(
             joinDate = profile.joinDate,
             courses = profile.courses,
             followers = profile.followers,
+            avatarUrl = user.avatarUrl,
             following = profile.following,
             dayStreak = profile.dayStreak,
             totalXp = profile.totalXp,

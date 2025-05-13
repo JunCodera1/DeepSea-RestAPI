@@ -1,6 +1,6 @@
 package com.example.deepsea.dto
 
-import com.example.deepsea.model.SurveyOption
+import com.example.deepsea.domain.enums.SurveyOption
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class SurveySelectionDto(
