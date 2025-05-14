@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
-
 @Repository
 interface UserProgressRepository : JpaRepository<UserProgress, Long> {
     fun findByUserIdAndLessonId(userId: Long, lessonId: Long): UserProgress?
@@ -40,6 +39,6 @@ interface UserProgressRepository : JpaRepository<UserProgress, Long> {
     fun findRecentCompletedUnitsByUserId(userId: Long, limit: Int): List<Long>
 
     @Query("SELECT up FROM UserProgress up WHERE up.userId = :userId AND up.completed = true " +
-            "ORDER BY up.completionDate DESC LIMIT 1")
+            "ORDER BY up.completionDate DESC")
     fun findMostRecentCompletedLessonByUserId(userId: Long): UserProgress?
 }

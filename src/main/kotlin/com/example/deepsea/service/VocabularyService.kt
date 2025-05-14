@@ -1,6 +1,5 @@
 package com.example.deepsea.service
 
-
 import com.example.deepsea.config.DataInitializer
 import com.example.deepsea.domain.enums.QuestionType
 import com.example.deepsea.model.LanguageContent
@@ -76,49 +75,49 @@ class VocabularyService(
     private fun createFallbackVocabularyItem(): QuizQuestion {
         val option1 = VocabularyOption(
             id = 1L,
-            image = DataInitializer.ImageResources.RICE,
+            image = DataInitializer.ImageResources.BREAD,
             languageContent = mapOf(
-                "en" to LanguageContent("water", ""),
-                "ja" to LanguageContent("水", "mizu")
+                "en" to LanguageContent("bread", ""),
+                "ja" to LanguageContent("パン", "pan")
             )
         )
 
         val option2 = VocabularyOption(
             id = 2L,
-            image = DataInitializer.ImageResources.RICE,
+            image = DataInitializer.ImageResources.DOG,
             languageContent = mapOf(
-                "en" to LanguageContent("fire", ""),
-                "ja" to LanguageContent("火", "hi")
+                "en" to LanguageContent("dog", ""),
+                "ja" to LanguageContent("いぬ", "inu")
             )
         )
 
         val option3 = VocabularyOption(
             id = 3L,
-            image = DataInitializer.ImageResources.RICE,
+            image = DataInitializer.ImageResources.BOOK,
             languageContent = mapOf(
-                "en" to LanguageContent("earth", ""),
-                "ja" to LanguageContent("地球", "chikyuu")
+                "en" to LanguageContent("book", ""),
+                "ja" to LanguageContent("ほん", "hon")
             )
         )
 
         val option4 = VocabularyOption(
             id = 4L,
-            image = DataInitializer.ImageResources.RICE,
+            image = DataInitializer.ImageResources.SCHOOL,
             languageContent = mapOf(
-                "en" to LanguageContent("wind", ""),
-                "ja" to LanguageContent("風", "kaze")
+                "en" to LanguageContent("school", ""),
+                "ja" to LanguageContent("がっこう", "gakkou")
             )
         )
 
         return QuizQuestion(
             id = 1L,
             type = QuestionType.IMAGE_SELECTION.name,
-            prompt = "Choose the correct image for 水",
+            prompt = "Choose the correct translation for 'bread'",
             languageContent = mapOf(
-                "en" to LanguageContent("Choose the correct image for water", ""),
-                "ja" to LanguageContent("水の正しい画像を選んでください", "mizu no tadashii gazou wo erande kudasai")
+                "en" to LanguageContent("Choose the correct image for bread", ""),
+                "ja" to LanguageContent("breadの正しい画像を選んでください", "")
             ),
-            options = listOf(option1, option2, option3, option4),
+            options = listOf(option1, option2, option3, option4)
         )
     }
 }

@@ -10,19 +10,19 @@ import jakarta.persistence.Table
 @Table(name = "hearing_exercises")
 data class HearingExercise(
     @Id
-    val id: String,
+    val id: String = "",
+
     @Column(name = "unit_id")
-    val unitId: Long,
-    @Column(name = "audio_url")
-    val audioUrl: String,
+    val unitId: Long = 0L,
+
     @Column(name = "correct_answer")
-    val correctAnswer: String,
-    val options: String // Assuming options are stored as a comma-separated string
+    val correctAnswer: String = "",
+
+    val options: String = "" // Comma-separated options
 ) {
     fun toDto(): HearingExerciseDto {
         return HearingExerciseDto(
             id = id,
-            audio = audioUrl,
             correctAnswer = correctAnswer,
             options = options.split(",").map { it.trim() }
         )
