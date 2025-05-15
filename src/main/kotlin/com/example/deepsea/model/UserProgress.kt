@@ -5,27 +5,40 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "user_progress")
-data class UserProgress(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+class UserProgress() {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long = 0
 
     @Column(name = "user_id")
-    val userId: Long,
+    var userId: Long = 0
 
     @Column(name = "unit_id")
-    val unitId: Long,
+    var unitId: Long = 0
 
     @Column(name = "lesson_id")
-    val lessonId: Long,
+    var lessonId: Long = 0
 
-    var completed: Boolean = false,
+    var completed: Boolean = false
 
     @Column(name = "stars_earned")
-    var starsEarned: Int = 0,
+    var starsEarned: Int = 0
 
     @Column(name = "xp_earned")
-    var xpEarned: Int = 0,
+    var xpEarned: Int = 0
 
     @Column(name = "completion_date")
     var completionDate: LocalDateTime? = null
-)
+
+    // Secondary constructor để khởi tạo nhanh
+    constructor(
+        userId: Long,
+        unitId: Long,
+        lessonId: Long
+    ) : this() {
+        this.userId = userId
+        this.unitId = unitId
+        this.lessonId = lessonId
+    }
+}

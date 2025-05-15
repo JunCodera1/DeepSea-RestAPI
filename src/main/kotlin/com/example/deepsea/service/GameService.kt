@@ -33,6 +33,7 @@ class GameService(
             player2Id = null,
             gameMode = request.gameMode,
             status = "PENDING"
+            // ❌ KHÔNG gán id ở đây
         )
         match = matchRepository.save(match)
 

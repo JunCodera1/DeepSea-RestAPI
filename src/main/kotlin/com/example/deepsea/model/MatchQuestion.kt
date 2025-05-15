@@ -10,7 +10,7 @@ data class MatchQuestion(
     val id: Long = 0,
 
     @Column(name = "match_id")
-    val matchId: Long,
+    val matchId: Long?,
 
     @Column(name = "question_id")
     val questionId: Long,

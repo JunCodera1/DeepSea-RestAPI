@@ -65,4 +65,16 @@ class UserProfileController(
         }
     }
 
+    @PostMapping("/{userId}/add-xp")
+    fun addXpToUser(
+        @PathVariable userId: Long,
+        @RequestParam amount: Int
+    ): ResponseEntity<String> {
+        return try {
+            userProfileService.addXp(userId, amount)
+            ResponseEntity.ok("XP added successfully")
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body("Failed to add XP: ${e.message}")
+        }
+    }
 }

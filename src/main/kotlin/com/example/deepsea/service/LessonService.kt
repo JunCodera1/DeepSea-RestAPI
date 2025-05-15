@@ -1,17 +1,11 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.dto.LessonCompletionDto
-import com.example.deepsea.dto.LessonContentDto
-import com.example.deepsea.dto.LessonDto
-import com.example.deepsea.dto.LessonProgressDto
+import com.example.deepsea.dto.*
 import com.example.deepsea.model.UserStats
 import com.example.deepsea.model.UserProgress
 import com.example.deepsea.model.toContentItemDto
 import com.example.deepsea.model.toDto
-import com.example.deepsea.repository.LessonContentRepository
-import com.example.deepsea.repository.LessonRepository
-import com.example.deepsea.repository.UserProgressRepository
-import com.example.deepsea.repository.UserStatsRepository
+import com.example.deepsea.repository.*
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import java.time.LocalDate
@@ -23,7 +17,8 @@ class LessonService(
     private val lessonRepository: LessonRepository,
     private val lessonContentRepository: LessonContentRepository,
     private val userProgressRepository: UserProgressRepository,
-    private val userStatsRepository: UserStatsRepository
+    private val userStatsRepository: UserStatsRepository,
+    private val lessonResultRepository: LessonResultRepository
 ) {
 
     fun getLessonsByUnit(unitId: Long): List<LessonDto> {
@@ -111,6 +106,24 @@ class LessonService(
         }
 
         userStatsRepository.save(stats)
+    }
+
+    fun getLessonResultById(id: Long): LessonResultDto {
+        val result = lessonResultRepository.findById(id)
+            .orElseThrow { ResourceNotFoundException("LessonResult not found") }
+        return result.toDto()
+    }
+
+    @Transactional
+    fun saveLessonResult(resultDto: LessonResultDto) {
+        val userId = 1L
+
+        val stats = userStatsRepository.findById(userId).orElse(UserStats(userId = userId))
+
+        stats.totalXp += resultDto.xp
+
+        userStatsRepository.save(stats)
+
     }
 }
 

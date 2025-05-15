@@ -16,6 +16,13 @@ class UserProfileService(
     private val userRepository: UserRepository,
     private val userProfileRepository: UserProfileRepository
 ) {
+    fun addXp(userId: Long, amount: Int) {
+        val profile = userProfileRepository.findByUserId(userId)
+            ?: throw IllegalArgumentException("User profile not found")
+
+        profile.totalXp += amount
+        userProfileRepository.save(profile)
+    }
 
     fun getUserProfile(userId: Long): UserProfile {
         val user = userRepository.findByIdOrNull(userId)

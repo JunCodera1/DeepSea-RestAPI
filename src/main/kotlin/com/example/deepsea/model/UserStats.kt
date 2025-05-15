@@ -9,7 +9,7 @@ import java.time.LocalDate
 data class UserStats(
     @Id
     @Column(name = "user_id")
-    val userId: Long,
+    val userId: Long=0L,
 
     @Column(name = "total_xp")
     var totalXp: Int = 0,
@@ -25,4 +25,6 @@ data class UserStats(
 
     @Column(name = "levels_completed")
     var levelsCompleted: Int = 0
+
+
 )

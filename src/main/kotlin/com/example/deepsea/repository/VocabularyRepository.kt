@@ -23,6 +23,7 @@ interface VocabularyRepository : JpaRepository<QuizQuestion, Long> {
         @Param("type") type: String?
     ): List<QuizQuestion>
 
+
     /**
      * Find a random vocabulary item
      */

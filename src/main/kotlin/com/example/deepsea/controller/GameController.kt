@@ -20,9 +20,11 @@ class GameController(private val gameService: GameService) {
         } catch (e: IllegalArgumentException) {
             ResponseEntity.badRequest().body(null)
         } catch (e: Exception) {
+            e.printStackTrace() // THÊM DÒNG NÀY để log lỗi ra console
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null)
         }
     }
+
 
     @PostMapping("/answer")
     fun submitAnswer(@RequestBody request: GameAnswerRequest): ResponseEntity<AnswerResponse> {

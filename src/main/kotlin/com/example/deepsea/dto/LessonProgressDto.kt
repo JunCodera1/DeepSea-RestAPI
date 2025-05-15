@@ -5,5 +5,6 @@ data class LessonProgressDto(
     val completed: Boolean,
     val starsEarned: Int,
     val xpEarned: Int,
-    val nextLessonId: Long?
+    val nextLessonId: Long?,
+    val timeTaken: String? = null
 )

@@ -24,6 +24,23 @@ class VocabularyController(
         return ResponseEntity.ok(questions)
     }
 
+    @GetMapping("/questions/{questionId}")
+    fun getQuestionById(@PathVariable questionId: Long): ResponseEntity<QuizQuestion> {
+        val question = vocabularyService.getQuestionById(questionId)
+        return if (question != null) {
+            ResponseEntity.ok(question)
+        } else {
+            ResponseEntity.notFound().build()
+        }
+    }
+
+    @GetMapping("/questions/random")
+    fun getRandomQuestion(): ResponseEntity<QuizQuestion> {
+        val question = vocabularyService.getRandomQuestion()
+        return ResponseEntity.ok(question)
+    }
+
+
     /**
      * Get a specific vocabulary item by ID
      */

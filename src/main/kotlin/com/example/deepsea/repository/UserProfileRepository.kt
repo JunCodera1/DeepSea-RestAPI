@@ -20,4 +20,6 @@ interface UserProfileRepository : JpaRepository<UserProfile, Long> {
 
     @Query("SELECT COUNT(u) + 1 FROM UserProfile u WHERE u.totalXp > :xp")
     fun findUserRankByXp(xp: Int): Int
+
+
 }

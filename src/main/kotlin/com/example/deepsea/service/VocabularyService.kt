@@ -5,13 +5,15 @@ import com.example.deepsea.domain.enums.QuestionType
 import com.example.deepsea.model.LanguageContent
 import com.example.deepsea.model.QuizQuestion
 import com.example.deepsea.model.VocabularyOption
+import com.example.deepsea.repository.QuestionRepository
 import com.example.deepsea.repository.VocabularyRepository
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class VocabularyService(
-    private val vocabularyRepository: VocabularyRepository
+    private val vocabularyRepository: VocabularyRepository,
+    private val questionRepository: QuestionRepository
 ) {
     /**
      * Get questions for a specific lesson
@@ -20,6 +22,15 @@ class VocabularyService(
         val questionType = type?.let { QuestionType.valueOf(it) }
         // Sử dụng questionType.name để lấy tên của enum dưới dạng String
         return vocabularyRepository.findByLessonId(lessonId, questionType?.name)
+    }
+
+    fun getQuestionById(id: Long): QuizQuestion? {
+        return vocabularyRepository.findById(id).orElse(null)
+    }
+
+    fun getRandomQuestion(): QuizQuestion {
+        return vocabularyRepository.findRandom()
+            ?: throw NoSuchElementException("No quiz questions available")
     }
 
     /**

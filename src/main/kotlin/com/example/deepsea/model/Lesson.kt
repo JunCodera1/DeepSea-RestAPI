@@ -6,20 +6,21 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "lessons")
 data class Lesson(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
 
     @Column(name = "unit_id")
-    val unitId: Long,
+    val unitId: Long = 0,
 
-    val title: String,
-    val description: String,
+    val title: String = "",
+    val description: String = "",
 
     @Column(name = "lesson_type")
-    val lessonType: String,
+    val lessonType: String = "",
 
     @Column(name = "order_index")
-    val orderIndex: Int,
+    val orderIndex: Int = 0,
 
     @Column(name = "xp_reward")
     val xpReward: Int = 10,
@@ -30,6 +31,7 @@ data class Lesson(
     @Column(name = "difficulty_level")
     val difficultyLevel: String = "normal"
 )
+
 
 fun Lesson.toDto(): LessonDto =
     LessonDto(

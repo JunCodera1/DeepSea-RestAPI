@@ -8,11 +8,14 @@ import java.time.LocalDateTime
 data class Match(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-    val player1Id: Long,
-    val player2Id: Long?,
-    var gameMode: String,
-    var status: String,
+    var id: Long? = null,
+
+    var player1Id: Long = 0,
+    var player2Id: Long? = null,
+
+    var gameMode: String = "",
+    var status: String = "",
+
     var createdAt: LocalDateTime = LocalDateTime.now(),
     var completedAt: LocalDateTime? = null
 )

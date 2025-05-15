@@ -1,15 +1,12 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.dto.LessonCompletionDto
-import com.example.deepsea.dto.LessonContentDto
-import com.example.deepsea.dto.LessonDto
-import com.example.deepsea.dto.LessonProgressDto
+import com.example.deepsea.dto.*
 import com.example.deepsea.service.LessonService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/lessons")
+@RequestMapping("/api/v2/lessons")
 class LessonController(private val lessonService: LessonService) {
 
     @GetMapping("/unit/{unitId}")
@@ -35,4 +32,17 @@ class LessonController(private val lessonService: LessonService) {
     ): ResponseEntity<LessonProgressDto> {
         return ResponseEntity.ok(lessonService.completeLession(id, userId, completionData))
     }
+
+    @PostMapping("/results")
+    fun saveLessonResult(@RequestBody resultDto: LessonResultDto): ResponseEntity<Unit> {
+        lessonService.saveLessonResult(resultDto)
+        return ResponseEntity.ok().build()
+    }
+
+    @GetMapping("/results/{id}")
+    fun getLessonResultById(@PathVariable id: Long): ResponseEntity<LessonResultDto> {
+        val lessonResult = lessonService.getLessonResultById(id)
+        return ResponseEntity.ok(lessonResult)
+    }
+
 }
