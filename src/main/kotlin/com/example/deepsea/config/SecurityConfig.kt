@@ -49,6 +49,7 @@ class SecurityConfig {
                         "/api/questions/**",
                         "/api/sessions/**",
                         "/api/v2/lessons/**",
+                        "/api/mistakes/**",
                         "/error"
                     ).permitAll()
                     .requestMatchers(

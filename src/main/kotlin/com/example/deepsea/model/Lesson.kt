@@ -23,7 +23,7 @@ data class Lesson(
     val orderIndex: Int = 0,
 
     @Column(name = "xp_reward")
-    val xpReward: Int = 10,
+    val xpReward: Int = 100,
 
     @Column(name = "stars_reward")
     val starsReward: Int = 1,

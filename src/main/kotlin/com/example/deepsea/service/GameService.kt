@@ -69,7 +69,7 @@ class GameService(
             .orElseThrow { IllegalArgumentException("User not found") }
 
         val isCorrect = request.selectedAnswer == question.correctAnswer
-        val xpEarned = if (isCorrect) 10 else 0
+        val xpEarned = if (isCorrect) 100 else 0
 
         val answer = MatchAnswer(
             matchId = request.matchId,
