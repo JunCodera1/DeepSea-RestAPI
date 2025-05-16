@@ -3,6 +3,7 @@ package com.example.deepsea.controller
 import com.example.deepsea.dto.DailyGoalRequest
 import com.example.deepsea.domain.enums.SurveyOption
 import com.example.deepsea.dto.SurveySelectionDto
+import com.example.deepsea.dto.UpdateProgressRequest
 import com.example.deepsea.dto.UserProfileDto
 import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
@@ -75,6 +76,23 @@ class UserProfileController(
             ResponseEntity.ok("XP added successfully")
         } catch (e: Exception) {
             ResponseEntity.badRequest().body("Failed to add XP: ${e.message}")
+        }
+    }
+
+    @PutMapping("/{userId}/progress")
+    fun updateProgress(
+        @AuthenticationPrincipal user: User?,
+        @PathVariable userId: Long,
+        @RequestBody request: UpdateProgressRequest
+    ): ResponseEntity<String> {
+        if (user == null || user.id != userId) {
+            return ResponseEntity.status(401).body("Unauthorized")
+        }
+        return try {
+            userProfileService.updateProgress(userId, request.dailyStreak, request.lastLogin)
+            ResponseEntity.ok("Progress updated successfully")
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body("Failed to update progress: ${e.message}")
         }
     }
 }

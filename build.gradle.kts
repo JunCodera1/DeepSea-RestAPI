@@ -39,7 +39,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+	implementation ("com.stripe:stripe-java:25.2.0")
+	implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+	implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.7.3")
+	implementation ("io.projectreactor:reactor-core:3.6.7")
+	implementation ("org.reactivestreams:reactive-streams:1.0.4")
+	implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.7.3")
 	runtimeOnly("org.postgresql:postgresql")
+	implementation("io.github.cdimascio:dotenv-java:3.0.0")
 }
 
 kotlin {

@@ -10,6 +10,7 @@ import com.example.deepsea.repository.UserProfileRepository
 import com.example.deepsea.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 
 @Service
 class UserProfileService(
@@ -67,6 +68,15 @@ class UserProfileService(
 
         userProfile.dailyGoal = dailyGoal
         userProfileRepository.save(userProfile)
+    }
+
+    fun updateProgress(userId: Long, dayStreak: Int, lastLogin: LocalDate) {
+        val user = userRepository.findById(userId).orElseThrow { Exception("User not found") }
+        val profile = user.profile ?: throw Exception("User profile not found")
+
+        profile.dayStreak = dayStreak
+        user.lastLogin = lastLogin
+        userRepository.save(user)
     }
 
 }
