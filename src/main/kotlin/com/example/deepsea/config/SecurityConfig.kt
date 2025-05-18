@@ -53,6 +53,7 @@ class SecurityConfig {
                         "/api/words/**",
                         "/api/stories/**",
                         "/api/payments/**",
+                        "/api/sessions-listening/**",
                         "/error"
                     ).permitAll()
                     .requestMatchers(
