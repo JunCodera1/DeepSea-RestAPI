@@ -37,8 +37,6 @@ data class User(
     var firstLogin: Boolean = true,
 
     @Column(name = "last_login")
-
-
     var lastLogin: LocalDate = LocalDate.now(),
 ) : UserDetails {
 

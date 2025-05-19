@@ -1,16 +1,14 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.dto.DailyGoalRequest
 import com.example.deepsea.domain.enums.SurveyOption
-import com.example.deepsea.dto.SurveySelectionDto
-import com.example.deepsea.dto.UpdateProgressRequest
-import com.example.deepsea.dto.UserProfileDto
+import com.example.deepsea.dto.*
 import com.example.deepsea.model.User
 import com.example.deepsea.model.UserProfile
 import com.example.deepsea.service.UserProfileService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDate
 
 @RestController
 @RequestMapping("/api/users")
@@ -29,6 +27,7 @@ class UserProfileController(
         val profileData = userProfileService.getUserProfileData(userId)
         return ResponseEntity.ok(profileData)
     }
+
     @PostMapping("/update-survey")
     fun updateSurveySelection(
         @AuthenticationPrincipal user: User?,
@@ -45,9 +44,6 @@ class UserProfileController(
                 null
             }
         }.toSet()
-
-        // Remove this line since it's not used
-        // val updatedProfile = profile.copy(selectedSurveys = updatedSurveys)
 
         userProfileService.updateSurveySelections(profile, updatedSurveys)
         return ResponseEntity.ok("Survey selections updated.")
@@ -89,10 +85,24 @@ class UserProfileController(
             return ResponseEntity.status(401).body("Unauthorized")
         }
         return try {
-            userProfileService.updateProgress(userId, request.dailyStreak, request.lastLogin)
+            userProfileService.updateProgress(userId, request.dailyStreak, LocalDate.parse(request.lastLogin.toString()))
             ResponseEntity.ok("Progress updated successfully")
         } catch (e: Exception) {
             ResponseEntity.badRequest().body("Failed to update progress: ${e.message}")
         }
     }
+    @PutMapping("/{userId}/streak")
+    fun updateDayStreak(
+        @AuthenticationPrincipal currentUser: User?,
+        @PathVariable userId: Long,
+        @RequestBody request: DayStreakRequest
+    ): ResponseEntity<String> {
+        return try {
+            userProfileService.updateDayStreak(userId, request.dayStreak)
+            ResponseEntity.ok("Day streak updated to ${request.dayStreak}")
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body("Failed to update streak: ${e.message}")
+        }
+    }
+
 }

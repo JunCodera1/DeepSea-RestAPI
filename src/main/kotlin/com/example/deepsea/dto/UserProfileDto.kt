@@ -2,6 +2,7 @@ package com.example.deepsea.dto
 
 import com.example.deepsea.domain.enums.DailyGoalOption
 import com.example.deepsea.domain.enums.LanguageOption
+import java.time.LocalDate
 
 data class UserProfileDto(
     val name: String,
@@ -16,5 +17,6 @@ data class UserProfileDto(
     val currentLeague: String,
     val topFinishes: Int,
     val friends: Set<Any>,
-    val dailyGoalOption: DailyGoalOption?
+    val dailyGoalOption: DailyGoalOption?,
+    val streakHistory: List<LocalDate> = emptyList() // Add streak history
 )

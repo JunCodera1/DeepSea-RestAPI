@@ -52,6 +52,7 @@ class UserProfileService(
             dailyGoalOption = profile.dailyGoal
         )
     }
+
     fun saveUserProfile(profile: UserProfile): UserProfile {
         return userProfileRepository.save(profile)
     }
@@ -79,4 +80,8 @@ class UserProfileService(
         userRepository.save(user)
     }
 
+    fun updateDayStreak(userId: Long, newDayStreak: Int) {
+        val today = LocalDate.now()
+        updateProgress(userId, newDayStreak, today)
+    }
 }

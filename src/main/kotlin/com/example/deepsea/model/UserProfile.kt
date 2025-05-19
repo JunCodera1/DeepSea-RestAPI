@@ -5,6 +5,7 @@ import com.example.deepsea.domain.enums.LanguageOption
 import com.example.deepsea.domain.enums.SurveyOption
 import com.example.deepsea.util.toFormattedJoinDate
 import jakarta.persistence.*
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
@@ -52,6 +53,6 @@ data class UserProfile(
     @OneToOne
     @JoinColumn(name = "user_id")
     @com.fasterxml.jackson.annotation.JsonBackReference
-    val user: User? = null
-
+    val user: User? = null,
+    val streakHistory: List<LocalDate> = emptyList() // Add streak history
 )
