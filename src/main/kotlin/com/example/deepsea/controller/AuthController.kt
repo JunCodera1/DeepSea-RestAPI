@@ -1,12 +1,14 @@
 package com.example.deepsea.controller
 
 import RegisterResponseDto
+import com.example.deepsea.dto.CreateAdminDto
 import com.example.deepsea.dto.GoogleTokenRequestDto
 import com.example.deepsea.dto.LoginRequestDto
 import com.example.deepsea.dto.LoginResponseDto
 import com.example.deepsea.exception.ApiException
 import com.example.deepsea.entity.User
 import com.example.deepsea.entity.UserProfile
+import com.example.deepsea.enums.Role
 import com.example.deepsea.service.*
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -47,9 +49,9 @@ class AuthController(
 
         user.profile!!.dayStreak = when {
             lastLogin == null -> 1
-            ChronoUnit.DAYS.between(lastLogin, today) == 1L -> user.profile.dayStreak + 1
+            ChronoUnit.DAYS.between(lastLogin, today) == 1L -> user.profile!!.dayStreak + 1
             ChronoUnit.DAYS.between(lastLogin, today) > 1L -> 1
-            else -> user.profile.dayStreak // login cùng ngày, không thay đổi
+            else -> user.profile!!.dayStreak // login cùng ngày, không thay đổi
         }
         // Kiểm tra mật khẩu
         if (!hashService.checkBcrypt(payload.password, user.password)) {
@@ -68,7 +70,8 @@ class AuthController(
             username = user.username,
             email = user.getEmail(),
             firstLogin = isFirstLogin,
-            profile_id = user.profile!!.id
+            profile_id = user.profile!!.id,
+            role = user.role.toString()
         )
     }
 
@@ -155,9 +158,9 @@ class AuthController(
 
         loggedInUser.profile!!.dayStreak = when {
             lastLogin == null -> 1
-            ChronoUnit.DAYS.between(lastLogin, today) == 1L -> loggedInUser.profile.dayStreak + 1
+            ChronoUnit.DAYS.between(lastLogin, today) == 1L -> loggedInUser.profile!!.dayStreak + 1
             ChronoUnit.DAYS.between(lastLogin, today) > 1L -> 1
-            else -> loggedInUser.profile.dayStreak
+            else -> loggedInUser.profile!!.dayStreak
         }
 
         val isFirstLogin = loggedInUser.firstLogin
@@ -172,11 +175,45 @@ class AuthController(
             username = loggedInUser.username,
             email = loggedInUser.getEmail(),
             firstLogin = isFirstLogin,
-            profile_id = loggedInUser.profile!!.id
+            profile_id = loggedInUser.profile!!.id,
+            role = loggedInUser.role.toString()
         )
     }
 
+    @PostMapping("/create-first-admin")
+    fun createFirstAdmin(@RequestBody dto: CreateAdminDto): String {
+        // Kiểm tra xem đã có admin nào chưa
+        val existingAdmins = userService.getAllUsers().filter { it.role == Role.ADMIN }
+        if (existingAdmins.isNotEmpty()) {
+            throw ApiException(400, "Admin already exists")
+        }
 
+        val adminUser = User(
+            name = dto.name,
+            username = dto.username,
+            password = hashService.hashBcrypt(dto.password),
+            email = dto.email,
+            role = Role.ADMIN,
+            avatarUrl = dto.avatarUrl
+        )
+
+        val savedUser = userService.save(adminUser)
+
+        val profile = UserProfile(
+            name = dto.name,
+            username = dto.username,
+            user = savedUser,
+            followers = 0,
+            following = 0,
+            dayStreak = 0,
+            totalXp = 0,
+            currentLeague = "Admin",
+            topFinishes = 0
+        )
+        userProfileService.saveUserProfile(profile)
+
+        return "First admin created successfully"
+    }
 
 
     @DeleteMapping("/delete-user/{id}")
@@ -207,5 +244,4 @@ class AuthController(
         val allowedChars = ('A'..'Z') + ('a'..'z') + ('0'..'9')
         return (1..16).map { allowedChars.random() }.joinToString("")
     }
-
 }

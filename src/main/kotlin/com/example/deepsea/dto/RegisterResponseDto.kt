@@ -7,5 +7,6 @@ data class RegisterResponseDto(
     val password: String,
     @field:Email(message = "Email is not validation")
     val email: String,
-    val avatarUrl: String? = null
+    val avatarUrl: String? = null,
+    val role: String? = null
 )
