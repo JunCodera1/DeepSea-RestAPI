@@ -25,7 +25,6 @@ class SecurityConfig {
                     .requestMatchers(
                         "/api/auth/**",
                         "/api/upload/**",
-                        "/api/uploads/**",
                         "/api/profiles/**",
                         "/api/users/**",
                         "/api/survey/**",
