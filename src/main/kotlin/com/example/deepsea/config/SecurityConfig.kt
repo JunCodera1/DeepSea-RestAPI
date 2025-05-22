@@ -54,6 +54,8 @@ class SecurityConfig {
                         "/api/stories/**",
                         "/api/payments/**",
                         "/api/sessions-listening/**",
+                        "/admin-dashboard/**",
+                        "/api/admin/**",
                         "/error"
                     ).permitAll()
                     .requestMatchers(
