@@ -4,7 +4,7 @@ import com.example.deepsea.dto.SectionProgressDto
 import com.example.deepsea.dto.UnitProgressDto
 import com.example.deepsea.dto.UserProgressDto
 import com.example.deepsea.dto.UserStatsDto
-import com.example.deepsea.model.UserStats
+import com.example.deepsea.entity.UserStats
 import com.example.deepsea.repository.*
 import org.springframework.stereotype.Service
 import java.time.LocalDate

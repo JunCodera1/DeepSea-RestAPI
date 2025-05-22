@@ -1,6 +1,6 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.WordPair
+import com.example.deepsea.entity.WordPair
 import com.example.deepsea.repository.WordPairRepository
 import org.springframework.stereotype.Service
 

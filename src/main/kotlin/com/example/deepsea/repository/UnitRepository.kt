@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UnitRepository : JpaRepository<com.example.deepsea.model.Unit, Long> {
-    fun findBySectionIdOrderByOrderIndex(sectionId: Long): List<com.example.deepsea.model.Unit>
+interface UnitRepository : JpaRepository<com.example.deepsea.entity.Unit, Long> {
+    fun findBySectionIdOrderByOrderIndex(sectionId: Long): List<com.example.deepsea.entity.Unit>
 
     fun findFirstBySectionIdAndOrderIndexGreaterThanOrderByOrderIndex(sectionId: Long, orderIndex: Int): Unit?
 

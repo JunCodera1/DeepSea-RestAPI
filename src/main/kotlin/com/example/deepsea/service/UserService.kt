@@ -1,9 +1,9 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.domain.enums.LanguageOption
-import com.example.deepsea.domain.enums.SurveyOption
-import com.example.deepsea.model.User
-import com.example.deepsea.model.UserProfile
+import com.example.deepsea.enums.LanguageOption
+import com.example.deepsea.enums.SurveyOption
+import com.example.deepsea.entity.User
+import com.example.deepsea.entity.UserProfile
 import com.example.deepsea.repository.UserProfileRepository
 import com.example.deepsea.repository.UserRepository
 import jakarta.transaction.Transactional

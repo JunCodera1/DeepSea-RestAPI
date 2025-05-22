@@ -1,7 +1,7 @@
 package com.example.deepsea.controller
 
 import com.example.deepsea.dto.HearingExerciseDto
-import com.example.deepsea.model.WordPair
+import com.example.deepsea.entity.WordPair
 import com.example.deepsea.service.LearningService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

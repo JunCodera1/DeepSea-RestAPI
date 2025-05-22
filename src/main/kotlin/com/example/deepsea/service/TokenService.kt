@@ -1,6 +1,6 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.User
+import com.example.deepsea.entity.User
 import org.springframework.security.oauth2.jwt.*
 import org.springframework.stereotype.Service
 import java.time.Instant

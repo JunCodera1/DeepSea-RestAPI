@@ -2,7 +2,7 @@ package com.example.deepsea.service
 
 import com.example.deepsea.dto.MistakeRequest
 import com.example.deepsea.dto.MistakeResponse
-import com.example.deepsea.model.Mistake
+import com.example.deepsea.entity.Mistake
 import com.example.deepsea.repository.MistakeRepository
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime

@@ -1,6 +1,6 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.model.LearningSession
+import com.example.deepsea.entity.LearningSession
 import com.example.deepsea.service.LearningSessionService
 import org.springframework.web.bind.annotation.*
 

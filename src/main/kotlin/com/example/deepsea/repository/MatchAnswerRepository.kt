@@ -1,6 +1,6 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.MatchAnswer
+import com.example.deepsea.entity.MatchAnswer
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository

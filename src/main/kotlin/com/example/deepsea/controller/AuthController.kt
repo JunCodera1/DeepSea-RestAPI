@@ -5,8 +5,8 @@ import com.example.deepsea.dto.GoogleTokenRequestDto
 import com.example.deepsea.dto.LoginRequestDto
 import com.example.deepsea.dto.LoginResponseDto
 import com.example.deepsea.exception.ApiException
-import com.example.deepsea.model.User
-import com.example.deepsea.model.UserProfile
+import com.example.deepsea.entity.User
+import com.example.deepsea.entity.UserProfile
 import com.example.deepsea.service.*
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

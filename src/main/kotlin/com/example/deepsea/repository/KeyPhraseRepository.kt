@@ -1,6 +1,6 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.KeyPhrase
+import com.example.deepsea.entity.KeyPhrase
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

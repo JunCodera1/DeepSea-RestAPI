@@ -1,7 +1,7 @@
 package com.example.deepsea.service
 
 import com.example.deepsea.dto.*
-import com.example.deepsea.model.*
+import com.example.deepsea.entity.*
 import com.example.deepsea.repository.*
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper

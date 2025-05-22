@@ -1,10 +1,10 @@
 package com.example.deepsea.service
 
 import com.example.deepsea.dto.*
-import com.example.deepsea.model.UserStats
-import com.example.deepsea.model.UserProgress
-import com.example.deepsea.model.toContentItemDto
-import com.example.deepsea.model.toDto
+import com.example.deepsea.entity.UserStats
+import com.example.deepsea.entity.UserProgress
+import com.example.deepsea.entity.toContentItemDto
+import com.example.deepsea.entity.toDto
 import com.example.deepsea.repository.*
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service

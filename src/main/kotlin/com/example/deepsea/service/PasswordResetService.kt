@@ -1,6 +1,6 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.PasswordResetToken
+import com.example.deepsea.entity.PasswordResetToken
 import com.example.deepsea.repository.PasswordResetTokenRepository
 import com.example.deepsea.repository.UserRepository
 import org.springframework.security.crypto.password.PasswordEncoder

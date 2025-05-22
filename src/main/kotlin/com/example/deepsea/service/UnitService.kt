@@ -2,7 +2,7 @@ package com.example.deepsea.service
 
 import com.example.deepsea.dto.UnitDto
 import com.example.deepsea.dto.UnitProgressDto
-import com.example.deepsea.model.toDto
+import com.example.deepsea.entity.toDto
 import com.example.deepsea.repository.LessonRepository
 import com.example.deepsea.repository.UnitRepository
 import com.example.deepsea.repository.UserProgressRepository

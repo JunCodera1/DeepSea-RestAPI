@@ -1,12 +1,11 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.FriendSuggestion
-import com.example.deepsea.model.UserProfile
+import com.example.deepsea.entity.FriendSuggestion
+import com.example.deepsea.entity.UserProfile
 import com.example.deepsea.repository.FriendSuggestionRepository
 import com.example.deepsea.repository.UserProfileRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
-import kotlin.math.min
 
 @Service
 class FriendSuggestionService(

@@ -1,9 +1,9 @@
 package com.example.deepsea.config
 
-import com.example.deepsea.domain.enums.QuestionType
-import com.example.deepsea.model.LanguageContent
-import com.example.deepsea.model.QuizQuestion
-import com.example.deepsea.model.VocabularyOption
+import com.example.deepsea.enums.QuestionType
+import com.example.deepsea.entity.LanguageContent
+import com.example.deepsea.entity.QuizQuestion
+import com.example.deepsea.entity.VocabularyOption
 import com.example.deepsea.repository.VocabularyRepository
 import org.springframework.boot.CommandLineRunner
 import org.springframework.context.annotation.Bean

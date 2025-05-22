@@ -1,10 +1,10 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.domain.enums.LanguageOption
-import com.example.deepsea.domain.enums.PathOption
+import com.example.deepsea.enums.LanguageOption
+import com.example.deepsea.enums.PathOption
 import com.example.deepsea.dto.UserCourseDto
-import com.example.deepsea.model.UserCourse
-import com.example.deepsea.model.UserCourseId
+import com.example.deepsea.entity.UserCourse
+import com.example.deepsea.entity.UserCourseId
 import com.example.deepsea.repository.UserCourseRepository
 import org.springframework.stereotype.Service
 

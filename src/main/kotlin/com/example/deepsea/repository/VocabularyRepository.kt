@@ -1,11 +1,10 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.QuizQuestion
+import com.example.deepsea.entity.QuizQuestion
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
-import java.util.*
 
 @Repository
 interface VocabularyRepository : JpaRepository<QuizQuestion, Long> {

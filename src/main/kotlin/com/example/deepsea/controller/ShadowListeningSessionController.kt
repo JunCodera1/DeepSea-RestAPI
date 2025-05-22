@@ -1,6 +1,6 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.model.ShadowListeningSession
+import com.example.deepsea.entity.ShadowListeningSession
 import com.example.deepsea.service.ShadowListeningSessionService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

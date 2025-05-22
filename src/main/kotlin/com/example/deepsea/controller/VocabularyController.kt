@@ -1,6 +1,6 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.model.QuizQuestion
+import com.example.deepsea.entity.QuizQuestion
 import com.example.deepsea.service.VocabularyService
 
 

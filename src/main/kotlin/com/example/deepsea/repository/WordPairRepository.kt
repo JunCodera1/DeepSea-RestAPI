@@ -1,6 +1,6 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.WordPair
+import com.example.deepsea.entity.WordPair
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface WordPairRepository : JpaRepository<WordPair, Long> {

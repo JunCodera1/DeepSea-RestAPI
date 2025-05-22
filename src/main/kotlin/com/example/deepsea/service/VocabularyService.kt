@@ -1,10 +1,10 @@
 package com.example.deepsea.service
 
 import com.example.deepsea.config.DataInitializer
-import com.example.deepsea.domain.enums.QuestionType
-import com.example.deepsea.model.LanguageContent
-import com.example.deepsea.model.QuizQuestion
-import com.example.deepsea.model.VocabularyOption
+import com.example.deepsea.enums.QuestionType
+import com.example.deepsea.entity.LanguageContent
+import com.example.deepsea.entity.QuizQuestion
+import com.example.deepsea.entity.VocabularyOption
 import com.example.deepsea.repository.QuestionRepository
 import com.example.deepsea.repository.VocabularyRepository
 import org.springframework.stereotype.Service

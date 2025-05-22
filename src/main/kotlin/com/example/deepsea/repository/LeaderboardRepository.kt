@@ -1,6 +1,6 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.Leaderboard
+import com.example.deepsea.entity.Leaderboard
 import org.springframework.data.jpa.repository.JpaRepository
 import org
 

@@ -1,6 +1,6 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.ShadowListeningSession
+import com.example.deepsea.entity.ShadowListeningSession
 import com.example.deepsea.repository.ShadowListeningSessionRepository
 import org.springframework.stereotype.Service
 import java.util.NoSuchElementException

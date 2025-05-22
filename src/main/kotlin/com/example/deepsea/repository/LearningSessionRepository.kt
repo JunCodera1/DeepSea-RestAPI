@@ -1,6 +1,6 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.LearningSession
+import com.example.deepsea.entity.LearningSession
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface LearningSessionRepository : JpaRepository<LearningSession, Long> {

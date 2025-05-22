@@ -1,6 +1,6 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.model.Tip
+import com.example.deepsea.entity.Tip
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

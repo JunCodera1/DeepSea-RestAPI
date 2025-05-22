@@ -1,9 +1,9 @@
 package com.example.deepsea.repository
 
-import com.example.deepsea.domain.enums.LanguageOption
-import com.example.deepsea.domain.enums.PathOption
-import com.example.deepsea.model.UserCourse
-import com.example.deepsea.model.UserCourseId
+import com.example.deepsea.enums.LanguageOption
+import com.example.deepsea.enums.PathOption
+import com.example.deepsea.entity.UserCourse
+import com.example.deepsea.entity.UserCourseId
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query

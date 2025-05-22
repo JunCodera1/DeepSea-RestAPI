@@ -1,6 +1,6 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.model.Word
+import com.example.deepsea.entity.Word
 import com.example.deepsea.service.WordService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

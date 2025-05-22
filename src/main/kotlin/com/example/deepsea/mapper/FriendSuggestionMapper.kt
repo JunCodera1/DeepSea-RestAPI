@@ -2,9 +2,7 @@ package com.example.deepsea.mapper
 
 import com.example.deepsea.dto.FriendInfoDto
 import com.example.deepsea.dto.FriendSuggestionDto
-import com.example.deepsea.dto.UserStatsDto
-import com.example.deepsea.model.FriendSuggestion
-import com.example.deepsea.model.UserProfile
+import com.example.deepsea.entity.FriendSuggestion
 import org.springframework.stereotype.Component
 
 @Component

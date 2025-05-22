@@ -1,7 +1,7 @@
 package com.example.deepsea.controller
 
 import com.example.deepsea.dto.LeaderboardEntryDto
-import com.example.deepsea.model.UserProfile
+import com.example.deepsea.entity.UserProfile
 import com.example.deepsea.repository.UserProfileRepository
 import org.springframework.web.bind.annotation.*
 

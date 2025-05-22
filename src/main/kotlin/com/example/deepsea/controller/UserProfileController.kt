@@ -1,9 +1,9 @@
 package com.example.deepsea.controller
 
-import com.example.deepsea.domain.enums.SurveyOption
+import com.example.deepsea.enums.SurveyOption
 import com.example.deepsea.dto.*
-import com.example.deepsea.model.User
-import com.example.deepsea.model.UserProfile
+import com.example.deepsea.entity.User
+import com.example.deepsea.entity.UserProfile
 import com.example.deepsea.service.UserProfileService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal

@@ -1,7 +1,7 @@
 package com.example.deepsea.service
 
 import com.example.deepsea.dto.SectionDto
-import com.example.deepsea.model.toDto
+import com.example.deepsea.entity.toDto
 import com.example.deepsea.repository.SectionRepository
 import com.example.deepsea.repository.UnitRepository
 import org.springframework.stereotype.Service

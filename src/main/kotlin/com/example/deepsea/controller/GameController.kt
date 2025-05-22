@@ -1,8 +1,7 @@
 package com.example.deepsea.controller
 
 import com.example.deepsea.dto.*
-import com.example.deepsea.model.Match
-import com.example.deepsea.model.Question
+import com.example.deepsea.entity.Match
 import com.example.deepsea.service.GameService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

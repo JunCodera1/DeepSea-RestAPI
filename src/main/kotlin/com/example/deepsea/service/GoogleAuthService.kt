@@ -1,6 +1,6 @@
 package com.example.deepsea.service
 
-import com.example.deepsea.model.GoogleUserInfo
+import com.example.deepsea.entity.GoogleUserInfo
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier
 import com.google.api.client.http.javanet.NetHttpTransport

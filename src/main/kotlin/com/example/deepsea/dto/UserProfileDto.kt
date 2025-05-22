@@ -1,7 +1,7 @@
 package com.example.deepsea.dto
 
-import com.example.deepsea.domain.enums.DailyGoalOption
-import com.example.deepsea.domain.enums.LanguageOption
+import com.example.deepsea.enums.DailyGoalOption
+import com.example.deepsea.enums.LanguageOption
 import java.time.LocalDate
 
 data class UserProfileDto(
