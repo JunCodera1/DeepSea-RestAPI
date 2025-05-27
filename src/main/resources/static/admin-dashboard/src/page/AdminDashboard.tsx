@@ -21,66 +21,9 @@ import {
   Bell,
   X,
 } from "lucide-react";
-
-// Define interfaces for type safety
-interface Profile {
-  followers: number;
-  following: number;
-  dayStreak: number;
-  totalXp: number;
-  currentLeague: string;
-  topFinishes: number;
-}
-
-interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  role: "USER" | "ADMIN";
-  avatarUrl: string;
-  firstLogin: string;
-  lastLogin: string;
-  createdAt: string;
-  profile: Profile;
-}
-
-interface Stats {
-  totalUsers: number;
-  adminUsers: number;
-  regularUsers: number;
-  activeUsersToday: number;
-  newUsersThisWeek: number;
-  totalProfiles: number;
-}
-
-interface SearchFilters {
-  username: string;
-  email: string;
-  role: string;
-}
-
-interface NewAdmin {
-  name: string;
-  username: string;
-  email: string;
-  password: string;
-  avatarUrl: string;
-}
-
-interface StatCardProps {
-  title: string;
-  value: number | string;
-  icon: React.ComponentType<{
-    className?: string;
-    style?: React.CSSProperties;
-  }>;
-  color: string;
-  change?: {
-    value: number;
-    isPositive: boolean;
-  };
-}
+import type { SearchFilters, Stats, User } from "../types";
+import type { NewAdmin } from "../types/new-admin";
+import type { StatCardProps } from "../types/stat-card-props";
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("dashboard");
@@ -644,7 +587,7 @@ const AdminDashboard: React.FC = () => {
       <div className="flex items-center justify-between">
         <div className="space-y-1">
           <p className="text-sm font-medium text-gray-500">{title}</p>
-          <p className="text-2xl font-bold">
+          <p className="text-2xl text-gray-700 font-bold">
             {typeof value === "number" ? value.toLocaleString() : value || 0}
           </p>
           {change && (
@@ -779,7 +722,7 @@ const AdminDashboard: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="sticky top-0 z-30 w-full border-b bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-2 md:gap-4">
               <button
@@ -793,7 +736,9 @@ const AdminDashboard: React.FC = () => {
               </button>
               <div className="hidden md:flex items-center gap-2">
                 <Shield className="h-6 w-6 text-blue-600" />
-                <span className="text-lg font-bold">Admin Portal</span>
+                <span className="text-lg text-gray-800 font-bold">
+                  Admin Portal
+                </span>
               </div>
             </div>
 
@@ -834,7 +779,7 @@ const AdminDashboard: React.FC = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {error && <ErrorMessage message={error} />}
 
         {/* Main Content */}
@@ -845,7 +790,7 @@ const AdminDashboard: React.FC = () => {
               <button
                 className={`flex items-center px-3 py-2 rounded-md ${
                   activeTab === "dashboard"
-                    ? "bg-gray-100 text-gray-900 font-medium"
+                    ? "bg-gray-100 text-gray-500 font-medium"
                     : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 }`}
                 onClick={() => setActiveTab("dashboard")}
@@ -857,7 +802,7 @@ const AdminDashboard: React.FC = () => {
                 className={`flex items-center px-3 py-2 rounded-md ${
                   activeTab === "users"
                     ? "bg-gray-100 text-gray-900 font-medium"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    : "text-gray-400 hover:bg-gray-50 hover:text-gray-900"
                 }`}
                 onClick={() => setActiveTab("users")}
               >
@@ -903,11 +848,11 @@ const AdminDashboard: React.FC = () => {
             {activeTab === "dashboard" && (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h1 className="text-2xl font-bold tracking-tight">
+                  <h1 className="text-2xl text-gray-700 font-bold tracking-tight">
                     Dashboard
                   </h1>
                   <button
-                    className="px-4 py-2 bg-white border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 flex items-center"
+                    className="px-4 py-2 bg-white border border-gray-300 rounded-md text-gray-500 hover:bg-gray-50 flex items-center"
                     onClick={refreshData}
                     disabled={loading}
                   >
@@ -976,7 +921,7 @@ const AdminDashboard: React.FC = () => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       <div className="bg-white rounded-lg shadow p-6">
-                        <h3 className="text-lg font-medium mb-4">
+                        <h3 className="text-lg text-gray-700 font-medium mb-4">
                           User Growth
                         </h3>
                         <div className="h-[200px] flex items-end gap-2">
@@ -1003,7 +948,7 @@ const AdminDashboard: React.FC = () => {
                       </div>
 
                       <div className="bg-white rounded-lg shadow p-6">
-                        <h3 className="text-lg font-medium mb-4">
+                        <h3 className="text-lg text-gray-700 font-medium mb-4">
                           User Distribution
                         </h3>
                         <div className="flex items-center justify-center h-[200px]">
@@ -1013,7 +958,7 @@ const AdminDashboard: React.FC = () => {
                               className="absolute inset-0 rounded-full border-8 border-transparent border-t-blue-500 animate-spin"
                               style={{ animationDuration: "3s" }}
                             ></div>
-                            <div className="absolute inset-0 flex items-center justify-center flex-col">
+                            <div className="absolute inset-0 text-gray-800 flex items-center justify-center flex-col">
                               <span className="text-2xl font-bold">
                                 {stats.totalUsers}
                               </span>

@@ -62,6 +62,16 @@ class SecurityConfig {
                         "/index.html",
                         "/css/**",
                         "/js/**",
+                        "/images/**",
+                        "/admin-dashboard/dist/**",
+                        "/admin-dashboard/assets/**",
+                        "/vite.svg",
+                        "/favicon.ico",
+                        "/error",
+                        "/",
+                        "/index.html",
+                        "/css/**",
+                        "/js/**",
                         "/images/**"
                     ).permitAll()
                     .anyRequest()
