@@ -24,6 +24,7 @@ class SecurityConfig {
                 auth
                     .requestMatchers(
                         "/api/auth/**",
+                        "/api/v1/friend-suggestions/**",
                         "/api/upload/**",
                         "/api/profiles/**",
                         "/api/users/**",
